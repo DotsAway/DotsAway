@@ -1,0 +1,2 @@
+# DotsAway
+Core game
