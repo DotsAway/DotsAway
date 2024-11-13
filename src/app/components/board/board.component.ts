@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dotsaway-board',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './board.component.scss'
 })
 export class BoardComponent {
+  private seed: string | null;
 
+  constructor(
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit() {
+    this.seed = this.route.snapshot.paramMap.get('seed');
+  }
 }
