@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GameContext } from '../../models/game-context.model';
+import { SeedService } from '../../services/seed.service';
 
 @Component({
   selector: 'dotsaway-board',
@@ -9,13 +11,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './board.component.scss'
 })
 export class BoardComponent {
-  private seed: string | null = null;
+  protected gameContext: GameContext | null = null;
 
   constructor(
     private route: ActivatedRoute,
+    private seedService: SeedService
   ) {}
 
   ngOnInit() {
-    this.seed = this.route.snapshot.paramMap.get('seed');
+    const seed = this.route.snapshot.paramMap.get('seed');
+    this.gameContext = this.seedService.parse(seed ?? '');
   }
 }
