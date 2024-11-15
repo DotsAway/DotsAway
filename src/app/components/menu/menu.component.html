@@ -1,3 +1,12 @@
-<div class="">
-    <p>menu works!</p>
-</div>
+<form class="menu-options-container" [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+    <label class="menu-option-text-width" for="width">Width:</label>
+    <input class="menu-option-value-width" id="width" [formControl]="menuForm.controls.width">
+
+    <label class="menu-option-text-height" for="height">Height:</label>
+    <input class="menu-option-value-height" id="height" [formControl]="menuForm.controls.height">
+
+    <label class="menu-option-text-lines" for="lines">Lines:</label>
+    <input class="menu-option-value-lines" id="lines" [formControl]="menuForm.controls.lines">
+
+    <button type="submit" class="menu-option-button-start">Start</button>
+</form>

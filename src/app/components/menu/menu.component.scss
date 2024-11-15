@@ -1,0 +1,39 @@
+.menu-options-container {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-areas: 
+        '. textWidth . valueWidth .' 
+        '. textHeight . valueHeight .' 
+        '. textLines . valueLines .'
+        '. . buttonStart . .';
+    color: white;
+}
+
+.menu-option-text-width {
+    grid-area: textWidth;
+}
+
+.menu-option-value-width {
+    grid-area: valueWidth;
+}
+
+.menu-option-text-height {
+    grid-area: textHeight;
+}
+
+.menu-option-value-height {
+    grid-area: valueHeight;
+}
+
+.menu-option-text-lines {
+    grid-area: textLines;
+}
+
+.menu-option-value-lines {
+    grid-area: valueLines;
+}
+
+.menu-option-button-start {
+    grid-area: buttonStart;
+    margin-top: 20px;
+}
