@@ -9,6 +9,4 @@ import { LogoComponent } from "./components/logo/logo.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'dotsaway';
-}
+export class AppComponent {}

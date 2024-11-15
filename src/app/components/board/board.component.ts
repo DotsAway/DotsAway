@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './board.component.scss'
 })
 export class BoardComponent {
-  private seed: string | null;
+  private seed: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
