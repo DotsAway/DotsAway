@@ -7,7 +7,7 @@ import { GameContext } from '../models/game-context.model';
 export class BoardService {
   constructor() { }
 
-  generate(gameContext: GameContext): void {
+  generate(gameContext: GameContext, holes: number, walls: number): void {
     // TODO: Add logic - generate dots, walls, holes, etc.
   }
 }

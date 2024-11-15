@@ -1,4 +1,4 @@
-<form class="menu-options-container" [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+<form class="menu-options-container" [formGroup]="menuForm" (ngSubmit)="onStart()">
     <label class="menu-option-text-width" for="width">Width:</label>
     <input class="menu-option-value-width" id="width" [formControl]="menuForm.controls.width" (keypress)="allowOnlyNumbers($event)">
     <div class="menu-option-error-width" *ngIf="menuForm.controls.width.touched && menuForm.controls.width.invalid">
@@ -23,5 +23,22 @@
         <small *ngIf="menuForm.controls.lines.errors?.['pattern']">Lines must be a number.</small>
     </div>
 
+    <label class="menu-option-text-holes" for="holes">Holes:</label>
+    <input class="menu-option-value-holes" id="holes" [formControl]="menuForm.controls.holes" (keypress)="allowOnlyNumbers($event)">
+    <div class="menu-option-error-holes" *ngIf="menuForm.controls.holes.touched && menuForm.controls.holes.invalid">
+        <small *ngIf="menuForm.controls.holes.errors?.['required']">Holes is required.</small>
+        <small *ngIf="menuForm.controls.holes.errors?.['min']">Holes must be at least 0.</small>
+        <small *ngIf="menuForm.controls.holes.errors?.['pattern']">Holes must be a number.</small>
+    </div>
+
+    <label class="menu-option-text-walls" for="walls">Walls:</label>
+    <input class="menu-option-value-walls" id="walls" [formControl]="menuForm.controls.walls" (keypress)="allowOnlyNumbers($event)">
+    <div class="menu-option-error-walls" *ngIf="menuForm.controls.walls.touched && menuForm.controls.walls.invalid">
+        <small *ngIf="menuForm.controls.walls.errors?.['required']">Walls is required.</small>
+        <small *ngIf="menuForm.controls.walls.errors?.['min']">Walls must be at least 0.</small>
+        <small *ngIf="menuForm.controls.walls.errors?.['pattern']">Walls must be a number.</small>
+    </div>
+
     <div class="rounded-button menu-option-button-start" (click)="onStart()">Start</div>
+    <div class="rounded-button menu-option-button-editor" (click)="onEdit()">Editor</div>
 </form>

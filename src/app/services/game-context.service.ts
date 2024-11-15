@@ -10,15 +10,22 @@ export class GameContextService {
     private boardService: BoardService
   ) { }
 
-  createContext(width: string | null, height: string| null, lines: string | null): GameContext {
+  createContext(
+    width: string | null, 
+    height: string| null, 
+    lines: string | null,
+    holes: string | null,
+    walls: string | null): GameContext {
     const gameContext: GameContext = {
       width: Number(width),
       height: Number(height),
       lines: Number(lines),
-      dots: []
+      dots: [],
+      holes: [],
+      walls: []
     };
 
-    this.boardService.generate(gameContext);
+    this.boardService.generate(gameContext, Number(holes), Number(walls));
 
     return gameContext;
   }

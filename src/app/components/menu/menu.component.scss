@@ -1,7 +1,7 @@
 .menu-options-container {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 20px 30px 20px 30px 20px 30px 50px;
+    grid-template-rows: 20px 30px 20px 30px 20px 30px 20px 30px 20px 30px 50px;
     grid-template-areas: 
         '. textWidth . valueWidth .' 
         '. errorWidth errorWidth errorWidth errorWidth'
@@ -9,7 +9,11 @@
         '. errorHeight errorHeight errorHeight errorHeight'
         '. textLines . valueLines .'
         '. errorLines errorLines errorLines errorLines'
-        '. . buttonStart . .';
+        '. textHoles . valueHoles .'
+        '. errorHoles errorHoles errorHoles errorHoles'
+        '. textWalls . valueWalls .'
+        '. errorWalls errorWalls errorWalls errorWalls'
+        '. buttonStart . buttonEditor .';
     color: white;
 }
 
@@ -49,8 +53,37 @@
     grid-area: errorLines;
 }
 
+.menu-option-text-holes {
+    grid-area: textHoles;
+}
+
+.menu-option-value-holes {
+    grid-area: valueHoles;
+}
+
+.menu-option-error-holes {
+    grid-area: errorHoles;
+}
+
+.menu-option-text-walls {
+    grid-area: textWalls;
+}
+
+.menu-option-value-walls {
+    grid-area: valueWalls;
+}
+
+.menu-option-error-walls {
+    grid-area: errorWalls;
+}
+
 .menu-option-button-start {
     grid-area: buttonStart;
+    margin-top: 20px;
+}
+
+.menu-option-button-editor {
+    grid-area: buttonEditor;
     margin-top: 20px;
 }
 

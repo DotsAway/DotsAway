@@ -17,7 +17,9 @@ export class MenuComponent {
   menuForm: FormGroup<{
     width: FormControl<string | null>,
     height: FormControl<string | null>,
-    lines: FormControl<string | null>
+    lines: FormControl<string | null>,
+    holes: FormControl<string | null>,
+    walls: FormControl<string | null>
   }>;
 
   constructor(
@@ -29,7 +31,9 @@ export class MenuComponent {
     this.menuForm = this.formBuilder.group({
       width: ['3', [Validators.required, Validators.min(1), Validators.pattern('^[0-9]*$')]],
       height: ['3', [Validators.required, Validators.min(2), Validators.pattern('^[0-9]*$')]],
-      lines: ['2', [Validators.required, Validators.min(1), Validators.pattern('^[0-9]*$')]]
+      lines: ['2', [Validators.required, Validators.min(1), Validators.pattern('^[0-9]*$')]],
+      holes: ['0', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]*$')]],
+      walls: ['0', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]*$')]]
     });
   }
 
@@ -43,14 +47,34 @@ export class MenuComponent {
     this.router.navigate(['/board', { seed }]);
   }
 
+  openEditor(seed: string | null): void {
+    this.router.navigate(['/editor', { seed }]);
+  }
+
   onStart(): void {
     if (this.menuForm.valid) {
       const gameContext: GameContext = this.gameContextService.createContext(
         this.menuForm.controls.width.value, 
         this.menuForm.controls.height.value, 
-        this.menuForm.controls.lines.value);
+        this.menuForm.controls.lines.value,
+        this.menuForm.controls.holes.value,
+        this.menuForm.controls.walls.value);
       const seed: string = this.seedService.generate(gameContext);
       this.goToSeed(seed);
+    }
+    this.menuForm.reset();
+  }
+
+  onEdit(): void {
+    if (this.menuForm.valid) {
+      const gameContext: GameContext = this.gameContextService.createContext(
+        this.menuForm.controls.width.value, 
+        this.menuForm.controls.height.value, 
+        this.menuForm.controls.lines.value,
+        this.menuForm.controls.holes.value,
+        this.menuForm.controls.walls.value);
+      const seed: string = this.seedService.generate(gameContext);
+      this.openEditor(seed);
     }
     this.menuForm.reset();
   }
