@@ -4,6 +4,7 @@
     <div class="menu-option-error-width" *ngIf="menuForm.controls.width.touched && menuForm.controls.width.invalid">
         <small *ngIf="menuForm.controls.width.errors?.['required']">Width is required.</small>
         <small *ngIf="menuForm.controls.width.errors?.['min']">Width must be at least 1.</small>
+        <small *ngIf="menuForm.controls.width.errors?.['pattern']">Width must be a number.</small>
     </div>
     
     <label class="menu-option-text-height" for="height">Height:</label>
@@ -11,6 +12,7 @@
     <div class="menu-option-error-height" *ngIf="menuForm.controls.height.touched && menuForm.controls.height.invalid">
         <small *ngIf="menuForm.controls.height.errors?.['required']">Height is required.</small>
         <small *ngIf="menuForm.controls.height.errors?.['min']">Height must be at least 2.</small>
+        <small *ngIf="menuForm.controls.height.errors?.['pattern']">Height must be a number.</small>
     </div>
 
     <label class="menu-option-text-lines" for="lines">Lines:</label>
@@ -18,6 +20,7 @@
     <div class="menu-option-error-lines" *ngIf="menuForm.controls.lines.touched && menuForm.controls.lines.invalid">
         <small *ngIf="menuForm.controls.lines.errors?.['required']">Lines is required.</small>
         <small *ngIf="menuForm.controls.lines.errors?.['min']">Lines must be at least 1.</small>
+        <small *ngIf="menuForm.controls.lines.errors?.['pattern']">Lines must be a number.</small>
     </div>
 
     <div class="rounded-button menu-option-button-start">Start</div>

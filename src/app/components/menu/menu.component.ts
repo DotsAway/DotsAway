@@ -22,9 +22,9 @@ export class MenuComponent {
     private formBuilder: FormBuilder
   ) {
     this.menuForm = this.formBuilder.group({
-      width: ['3', [Validators.required, Validators.min(1)]],
-      height: ['3', [Validators.required, Validators.min(2)]],
-      lines: ['2', [Validators.required, Validators.min(1)]]
+      width: ['3', [Validators.required, Validators.min(1), Validators.pattern('^[0-9]*$')]],
+      height: ['3', [Validators.required, Validators.min(2), Validators.pattern('^[0-9]*$')]],
+      lines: ['2', [Validators.required, Validators.min(1), Validators.pattern('^[0-9]*$')]]
     });
   }
 
