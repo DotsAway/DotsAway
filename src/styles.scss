@@ -1,3 +1,14 @@
 body {
     background-color: #333333;
 }
+
+.rounded-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}

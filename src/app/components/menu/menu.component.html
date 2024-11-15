@@ -3,7 +3,7 @@
     <input class="menu-option-value-width" id="width" [formControl]="menuForm.controls.width">
     <div class="menu-option-error-width" *ngIf="menuForm.controls.width.touched && menuForm.controls.width.invalid">
         <small *ngIf="menuForm.controls.width.errors?.['required']">Width is required.</small>
-        <small *ngIf="menuForm.controls.width.errors?.['min']">Width must be at least 2.</small>
+        <small *ngIf="menuForm.controls.width.errors?.['min']">Width must be at least 1.</small>
     </div>
     
     <label class="menu-option-text-height" for="height">Height:</label>
@@ -20,5 +20,5 @@
         <small *ngIf="menuForm.controls.lines.errors?.['min']">Lines must be at least 1.</small>
     </div>
 
-    <button type="submit" class="menu-option-button-start">Start</button>
+    <div class="rounded-button menu-option-button-start">Start</div>
 </form>
