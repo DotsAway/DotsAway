@@ -1,6 +1,6 @@
 <form class="menu-options-container" [formGroup]="menuForm" (ngSubmit)="onSubmit()">
     <label class="menu-option-text-width" for="width">Width:</label>
-    <input class="menu-option-value-width" id="width" [formControl]="menuForm.controls.width">
+    <input class="menu-option-value-width" id="width" [formControl]="menuForm.controls.width" (keypress)="allowOnlyNumbers($event)">
     <div class="menu-option-error-width" *ngIf="menuForm.controls.width.touched && menuForm.controls.width.invalid">
         <small *ngIf="menuForm.controls.width.errors?.['required']">Width is required.</small>
         <small *ngIf="menuForm.controls.width.errors?.['min']">Width must be at least 1.</small>
@@ -8,7 +8,7 @@
     </div>
     
     <label class="menu-option-text-height" for="height">Height:</label>
-    <input class="menu-option-value-height" id="height" [formControl]="menuForm.controls.height">
+    <input class="menu-option-value-height" id="height" [formControl]="menuForm.controls.height" (keypress)="allowOnlyNumbers($event)">
     <div class="menu-option-error-height" *ngIf="menuForm.controls.height.touched && menuForm.controls.height.invalid">
         <small *ngIf="menuForm.controls.height.errors?.['required']">Height is required.</small>
         <small *ngIf="menuForm.controls.height.errors?.['min']">Height must be at least 2.</small>
@@ -16,7 +16,7 @@
     </div>
 
     <label class="menu-option-text-lines" for="lines">Lines:</label>
-    <input class="menu-option-value-lines" id="lines" [formControl]="menuForm.controls.lines">
+    <input class="menu-option-value-lines" id="lines" [formControl]="menuForm.controls.lines" (keypress)="allowOnlyNumbers($event)">
     <div class="menu-option-error-lines" *ngIf="menuForm.controls.lines.touched && menuForm.controls.lines.invalid">
         <small *ngIf="menuForm.controls.lines.errors?.['required']">Lines is required.</small>
         <small *ngIf="menuForm.controls.lines.errors?.['min']">Lines must be at least 1.</small>

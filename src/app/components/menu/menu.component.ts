@@ -28,6 +28,12 @@ export class MenuComponent {
     });
   }
 
+  allowOnlyNumbers(event: KeyboardEvent): void {
+    if (!/^[0-9]$/.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+
   goToSeed(seed: string | null): void {
     this.router.navigate(['/board', { seed }]);
   }
