@@ -1,10 +1,14 @@
 .menu-options-container {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20px 30px 20px 30px 20px 30px 50px;
     grid-template-areas: 
         '. textWidth . valueWidth .' 
+        '. errorWidth errorWidth errorWidth errorWidth'
         '. textHeight . valueHeight .' 
+        '. errorHeight errorHeight errorHeight errorHeight'
         '. textLines . valueLines .'
+        '. errorLines errorLines errorLines errorLines'
         '. . buttonStart . .';
     color: white;
 }
@@ -17,12 +21,20 @@
     grid-area: valueWidth;
 }
 
+.menu-option-error-width {
+    grid-area: errorWidth;
+}
+
 .menu-option-text-height {
     grid-area: textHeight;
 }
 
 .menu-option-value-height {
     grid-area: valueHeight;
+}
+
+.menu-option-error-height {
+    grid-area: errorHeight;
 }
 
 .menu-option-text-lines {
@@ -33,7 +45,15 @@
     grid-area: valueLines;
 }
 
+.menu-option-error-lines {
+    grid-area: errorLines;
+}
+
 .menu-option-button-start {
     grid-area: buttonStart;
     margin-top: 20px;
+}
+
+small {
+    color: rgb(255, 107, 107);
 }
