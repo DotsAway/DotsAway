@@ -23,5 +23,5 @@
         <small *ngIf="menuForm.controls.lines.errors?.['pattern']">Lines must be a number.</small>
     </div>
 
-    <div class="rounded-button menu-option-button-start">Start</div>
+    <div class="rounded-button menu-option-button-start" (click)="onStart()">Start</div>
 </form>

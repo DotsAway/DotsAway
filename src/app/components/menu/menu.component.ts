@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { GameContext } from '../../models/game-context.model';
+import { GameContextService } from '../../services/game-context.service';
+import { SeedService } from '../../services/seed.service';
 
 @Component({
   selector: 'dotsaway-menu',
@@ -19,7 +22,9 @@ export class MenuComponent {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private gameContextService: GameContextService,
+    private seedService: SeedService
   ) {
     this.menuForm = this.formBuilder.group({
       width: ['3', [Validators.required, Validators.min(1), Validators.pattern('^[0-9]*$')]],
@@ -38,9 +43,14 @@ export class MenuComponent {
     this.router.navigate(['/board', { seed }]);
   }
 
-  onSubmit(): void {
+  onStart(): void {
     if (this.menuForm.valid) {
-      // TODO: Generate seed, and go to board - start game
+      const gameContext: GameContext = this.gameContextService.createContext(
+        this.menuForm.controls.width.value, 
+        this.menuForm.controls.height.value, 
+        this.menuForm.controls.lines.value);
+      const seed: string = this.seedService.generate(gameContext);
+      this.goToSeed(seed);
     }
     this.menuForm.reset();
   }
