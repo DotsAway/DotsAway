@@ -1,0 +1,12 @@
+.board {
+    display: grid;
+    height: 100%;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+    color: white;
+}

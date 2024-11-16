@@ -20,7 +20,7 @@ export class GameContextService {
       width: Number(width),
       height: Number(height),
       lines: Number(lines),
-      dots: [],
+      cells: [],
       holes: [],
       walls: []
     };

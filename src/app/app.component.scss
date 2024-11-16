@@ -1,17 +1,19 @@
 .website-container {
     display: grid;
     grid-template-areas: 'logo' 'body' 'footer';
-    justify-items: center;
 }
 
 .website-logo {
     grid-area: logo;
+    justify-self: center;
 }
 
 .website-body {
     grid-area: body;
+    height: 100vw;
 }
 
 .website-footer {
     grid-area: footer;
+    justify-self: center;
 }

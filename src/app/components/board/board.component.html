@@ -1,4 +1,6 @@
-<div class="">
-    <p>board works!</p>
-    <div>{{ gameContext?.width }}</div>
+<div class="board" *ngIf="gameContext" [style.gridTemplateColumns]="gridTemplateColumns">
+    <div *ngFor="let cell of gameContext.cells; let i = index" class="cell"
+        [ngStyle]="{'background-color': cell.color || '#000'}" (click)="onCellClick(cell)">
+        {{ cell.index }}
+    </div>
 </div>
