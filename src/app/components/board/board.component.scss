@@ -16,3 +16,35 @@
 .circle {
     border-radius: 50%;
 }
+
+.game-details-container {
+    margin-top: 3%;
+    color: white;
+    display: grid;
+    grid-template-areas: 
+        'header header header header'
+        '. textActiveColor valueActiveColor .';
+}
+
+.game-details-header {
+    justify-self: center;
+    grid-area: header;
+    margin-bottom: 10px;
+}
+
+.game-details-active-color-text {
+    grid-area: textActiveColor;
+}
+
+.game-details-active-color-value {
+    grid-area: valueActiveColor;
+    justify-self: center;
+    align-items: center;
+    align-content: center;
+}
+
+.active-color-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}

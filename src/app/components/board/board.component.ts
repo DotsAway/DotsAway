@@ -15,8 +15,9 @@ import { CommonModule } from '@angular/common';
 export class BoardComponent {
   protected gameContext: GameContext | null = null;
   protected grid: Cell[][] = [];
-  protected gridTemplateColumns: string = '';
+  protected gridTemplateColumns: string = "";
   protected circleOffset: number = 20;
+  protected activeColor: string = "";
 
   @ViewChildren('cell') cellElementRefs!: QueryList<ElementRef>;
   @ViewChildren('circle') circleElementRefs!: QueryList<ElementRef>;
@@ -28,6 +29,8 @@ export class BoardComponent {
   ) { }
 
   ngOnInit() {
+    this.activeColor = "";
+
     const seed = this.route.snapshot.paramMap.get('seed');
     this.gameContext = this.seedService.parse(seed ?? '');
 
@@ -45,7 +48,11 @@ export class BoardComponent {
     });
   }
 
-  onCellClick(cell: Cell): void {
-    console.log(cell.index);
+  onCircleClick(cell: Cell): void {
+    if (!cell.color) {
+      return;
+    }
+
+    this.activeColor = cell.color;
   }
 }
