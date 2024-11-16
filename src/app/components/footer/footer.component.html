@@ -1,3 +1,8 @@
-<div class="">
-    <p>footer works!</p>
-</div>
+<footer class="footer">
+    <p>&copy; 2024 Krzysztof Dobrzyński. All rights reserved.</p>
+    <p>
+        <a *ngIf="repoLink" [href]="repoLink" target="_blank" rel="noopener noreferrer">
+            GitHub Page
+        </a>
+    </p>
+</footer>
