@@ -18,6 +18,15 @@ export class BoardService {
       index: index
     }));
 
+    gameContext.cells[0].color = '#ff0000';
+    gameContext.cells[7].color = '#ff0000';
+
+    gameContext.cells[1].color = '#ffff00';
+    gameContext.cells[4].color = '#ffff00';
+
+    gameContext.cells[2].color = '#00ff00';
+    gameContext.cells[8].color = '#00ff00';
+
     console.log(gameContext);
   }
 

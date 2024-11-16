@@ -9,4 +9,10 @@
     justify-content: center;
     border: 1px solid lightgray;
     color: white;
+    background-color: black;
+    position: relative;
+}
+
+.circle {
+    border-radius: 50%;
 }
