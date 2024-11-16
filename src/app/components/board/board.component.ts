@@ -17,10 +17,13 @@ export class BoardComponent {
   protected grid: Cell[][] = [];
   protected gridTemplateColumns: string = "";
   protected circleOffset: number = 20;
-  protected activeColor: string = "";
+
+  protected draggingCell: Cell | null = null;
+  protected isDragging = false;
 
   @ViewChildren('cell') cellElementRefs!: QueryList<ElementRef>;
   @ViewChildren('circle') circleElementRefs!: QueryList<ElementRef>;
+  @ViewChildren('overlay') overlayElementRefs!: QueryList<ElementRef>;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,9 +31,7 @@ export class BoardComponent {
     private renderer: Renderer2
   ) { }
 
-  ngOnInit() {
-    this.activeColor = "";
-
+  ngOnInit(): void {
     const seed = this.route.snapshot.paramMap.get('seed');
     this.gameContext = this.seedService.parse(seed ?? '');
 
@@ -46,13 +47,42 @@ export class BoardComponent {
       this.renderer.setStyle(circleRef.nativeElement, 'width', `${cellRect.width - this.circleOffset}px`);
       this.renderer.setStyle(circleRef.nativeElement, 'height', `${cellRect.height - this.circleOffset}px`);
     });
+
+    this.overlayElementRefs.forEach((overlayRef) => {
+      this.renderer.setStyle(overlayRef.nativeElement, 'width', `${cellRect.width - 2}px`);
+      this.renderer.setStyle(overlayRef.nativeElement, 'height', `${cellRect.height - 2}px`);
+    });
   }
 
-  onCircleClick(cell: Cell): void {
-    if (!cell.color) {
+  getOverlayNativeElement(cell: Cell): any {
+    return this.overlayElementRefs.get(cell.index)?.nativeElement;
+  }
+
+  colorOverlay(cell: Cell, color: string | null): void {
+    const colorWithoutAlpha = color?.substring(0, 7);
+    const colorWithAlpha = colorWithoutAlpha + "80"; // 50% alpha
+
+    const overlayNativeElement = this.getOverlayNativeElement(cell);
+    this.renderer.setStyle(overlayNativeElement, "background-color", colorWithAlpha);
+  }
+
+  removeOverlay(cell: Cell): void {
+    const overlayNativeElement = this.getOverlayNativeElement(cell);
+    this.renderer.setStyle(overlayNativeElement, "background-color", null);
+  }
+
+  onCellClick(cell: Cell): void {
+    if (!this.draggingCell) {
+      this.draggingCell = cell;
+      this.colorOverlay(cell, this.draggingCell.color);
       return;
     }
 
-    this.activeColor = cell.color;
+    if (cell.color === null) {
+      this.colorOverlay(cell, this.draggingCell.color);
+    } else {
+      this.draggingCell = cell;
+      this.colorOverlay(cell, this.draggingCell.color);
+    }
   }
 }

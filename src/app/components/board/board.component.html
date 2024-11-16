@@ -1,6 +1,7 @@
 <div class="board" *ngIf="gameContext" [style.gridTemplateColumns]="gridTemplateColumns">
-    <div #cell *ngFor="let cell of gameContext.cells" class="cell" (click)="onCircleClick(cell)">
-        <div #circle class="circle" [ngStyle]="{'background-color': cell.color}" (click)="onCircleClick(cell)"></div>
+    <div #cell *ngFor="let cell of gameContext.cells" class="cell" (click)="onCellClick(cell)">
+        <div #circle class="circle" [ngStyle]="{'background-color': cell.color}"></div>
+        <div #overlay class="cell-overlay"></div>
     </div>
 </div>
 
@@ -12,8 +13,8 @@
         Active Color:
     </div>
     <div class="game-details-active-color-value">
-        <div class="circle active-color-circle" [ngStyle]="{'background-color': activeColor}">
-            <div *ngIf="activeColor == null || activeColor == ''">-</div>
+        <div class="circle active-color-circle" [ngStyle]="{'background-color': draggingCell?.color}">
+            <div *ngIf="draggingCell === null">-</div>
         </div>
     </div>
 </div>
