@@ -1,5 +1,5 @@
 <div class="board" *ngIf="gameContext" [style.gridTemplateColumns]="gridTemplateColumns">
-    <div #cell *ngFor="let cell of gameContext.cells" class="cell">
+    <div #cell *ngFor="let cell of gameContext.cells" class="cell" (click)="onCircleClick(cell)">
         <div #circle class="circle" [ngStyle]="{'background-color': cell.color}" (click)="onCircleClick(cell)"></div>
     </div>
 </div>
